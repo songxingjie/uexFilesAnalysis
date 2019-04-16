@@ -8,10 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
 
 @interface PrAndPu : NSObject
 
+
+@property(strong,nonatomic)NSMutableDictionary *dicInfo;//证书的信息
+
+//解析证书信息
+- (void)analyticalCertificateFromPKCS12File:(NSString *)pkcsPath passphrase:(NSString *)pkcsPassword;
+
 @end
 
-NS_ASSUME_NONNULL_END
+

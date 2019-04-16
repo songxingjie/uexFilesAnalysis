@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AppCanKit/AppCanKit.h>
 
-@interface EUExFilesAnalysis : NSObject
+@interface EUExFilesAnalysis : EUExBase
+
+- (void)dismissViewController;
+
 
 @end

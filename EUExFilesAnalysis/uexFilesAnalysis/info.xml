@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uexplugins>
+    <plugin
+        uexName="uexFilesAnalysis" version="4.0.0" build="20190409">
+        <info>0:解析.pfx文件插件</info>
+    </plugin>
+</uexplugins>
+
