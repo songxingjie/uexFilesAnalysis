@@ -468,7 +468,7 @@ void parseCert3(X509* x509){
     
     [aDic setValue:[NSString stringWithUTF8String:thumbprint(x509).c_str()] forKey:@"Thumbprint"];
     [aDic setValue:versionStr forKey:@"version:"];
-    [aDic setValue:[NSString stringWithUTF8String:serial(x509).c_str()] forKey:@"serialNumber"];
+    [aDic setValue:[NSString stringWithUTF8String:serial(x509).c_str()] forKey:@"serialNumberLong"];
     [aDic setValue:[NSString stringWithUTF8String:signature_algorithm(x509).c_str()] forKey:@"sigAlgName"];
    // [aDic setValue:[NSString stringWithUTF8String:public_key_ec_curve_name(x509).c_str()] forKey:@"PublicKeyCurveName"];
     [aDic setValue:[NSString stringWithUTF8String:public_key_type(x509).c_str()] forKey:@"PublicKeyType:"];
