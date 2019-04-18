@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript">
+			window.uexOnload = function(type) {
+
+				uexFilesAnalysis.cbAnalysisData = function(param) {
+				alert("--------"+param);
+                console.info("====="+param);
+
+                var json=JSON.parse(param);
+                console.info("1111111111======="+json.publicKeyStr);
+				};
+
+			}
+
+			function CheckRootTask() {
+				var json = {
+					filePath: "exterbox://appcan.pfx",
+					password:"111111"
+				};
+				uexFilesAnalysis.fileAnalysis(JSON.stringify(json));
+			}
+
+
+		</script>
+</head>
+
+<body>
+<div class="tit">uexDemo对象</div>
+<div class="conbor">
+    <div class="consj">
+        <span>检测手机的Root权限</span>
+        <input class="btn" type="button" value="CheckRootTask" onclick="CheckRootTask()"><br>
+
+
+</div>
+</div>
+</body>
+
+</html>
