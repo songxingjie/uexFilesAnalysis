@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexFilesAnalysis" version="4.0.2" build="20190409">
-        <info>2:修改回调参数名称，添加路径"exterbox://"逻辑</info>
+        uexName="uexFilesAnalysis" version="4.0.3" build="20190409">
+        <info>3:测试路径转换问题</info>
+        <build>2:修改回调参数名称，添加路径"exterbox://"逻辑</build>
         <build>1:添加OpenSSL类库,进行解析</build>
         <build>0:创建解析.pfx文件插件</build>
     </plugin>

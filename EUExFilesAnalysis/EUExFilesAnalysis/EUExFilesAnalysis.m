@@ -53,8 +53,10 @@
         absFilePath = [basicPath stringByAppendingPathComponent:[absFilePath substringFromIndex:exterStr.length]];
         NSLog(@"absFilePath ============= %@",absFilePath);
     }
-//    absFilePath = [[NSBundle mainBundle] pathForResource:@"APPCAN.pfx" ofType:nil];
-//    password = @"111111";
+    
+        //测试文件解析方法
+        //    absFilePath = [[NSBundle mainBundle] pathForResource:@"APPCAN.pfx" ofType:nil];
+        //    password = @"111111";
 
     NSError *error;
     NSData *data = [NSData dataWithContentsOfFile:absFilePath options:NSDataReadingMappedIfSafe error:&error];
