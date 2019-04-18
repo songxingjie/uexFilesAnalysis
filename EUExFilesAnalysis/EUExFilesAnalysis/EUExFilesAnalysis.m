@@ -45,15 +45,21 @@
         NSLog(@"这是判断 ”exterbox://“ 的逻辑，因为引擎里没添加此逻辑，所以在此添加的");
         NSString *documentPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject;
         NSString *basicPath = [documentPath stringByAppendingPathComponent:@"exterbox"];
+        NSLog(@"basicPath ==== %@",basicPath);
         if (![[NSFileManager defaultManager] fileExistsAtPath:basicPath]) {
             [[NSFileManager defaultManager] createDirectoryAtPath:basicPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
-        absFilePath = [basicPath stringByAppendingPathComponent:[absFilePath substringFromIndex:@"exterbox://".length]];
+        NSString *exterStr = @"exterbox://";
+        absFilePath = [basicPath stringByAppendingPathComponent:[absFilePath substringFromIndex:exterStr.length]];
+        NSLog(@"absFilePath ============= %@",absFilePath);
     }
-    //    absFilePath = [[NSBundle mainBundle] pathForResource:@"APPCAN.pfx" ofType:nil];
-    //    password = @"111111";
-    NSData *data = [NSData dataWithContentsOfFile:absFilePath];
-    if (data) {
+//    absFilePath = [[NSBundle mainBundle] pathForResource:@"APPCAN.pfx" ofType:nil];
+//    password = @"111111";
+
+    NSError *error;
+    NSData *data = [NSData dataWithContentsOfFile:absFilePath options:NSDataReadingMappedIfSafe error:&error];
+
+    if (data){
         PrAndPu *pp = [[PrAndPu alloc] init];
         [pp analyticalCertificateFromPKCS12File:absFilePath passphrase:password];
         [self.webViewEngine callbackWithFunctionKeyPath:@"uexFilesAnalysis.cbAnalysisData"
@@ -82,35 +88,6 @@
                                                  }
                                              }];
     }
-}
-
-//将16进制的字符串转换成NSData
-- (NSMutableData *)convertHexStrToData:(NSString *)str {
-    if (!str || [str length] == 0) {
-        return nil;
-    }
-    
-    NSMutableData *hexData = [[NSMutableData alloc] initWithCapacity:8];
-    NSRange range;
-    if ([str length] %2 == 0) {
-        range = NSMakeRange(0,2);
-    } else {
-        range = NSMakeRange(0,1);
-    }
-    for (NSInteger i = range.location; i < [str length]; i += 2) {
-        unsigned int anInt;
-        NSString *hexCharStr = [str substringWithRange:range];
-        NSScanner *scanner = [[NSScanner alloc] initWithString:hexCharStr];
-        
-        [scanner scanHexInt:&anInt];
-        NSData *entity = [[NSData alloc] initWithBytes:&anInt length:1];
-        [hexData appendData:entity];
-        
-        range.location += range.length;
-        range.length = 2;
-    }
-    
-    return hexData;
 }
 
 #pragma mark - Public Method
